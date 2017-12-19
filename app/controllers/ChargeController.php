@@ -9,7 +9,33 @@ class ChargeController extends \BaseController {
 	 */
 	public function index()
 	{
-		$charges = Charge::get();
+		if ( Auth::user()->company_id != 1 ) {
+
+			$project_id = Project::where('company_id', Auth::user()->company_id)
+				->select('id')->get();
+
+			//removes the project ids from inside the nested array
+			$result = array();
+			foreach ($project_id as $key => $val) {
+				$result[] = $val->id;
+			}
+			//finds the lines that match the project ids found in the above query
+			$line_id = Line::whereIn('project_id', $result)->select('id')->get();
+
+
+			//removes the line ids from inside the nested array
+			$result = array();
+			foreach ($line_id as $key => $val) {
+				$result[] = $val->id;
+			}
+			//finds the charges that match the line ids found in the above query
+			$charges = Charge::whereIn('line_id', $result)->get();
+
+		}
+		else {
+			$charges = Charge::get();
+		}
+		
 
 		return View::make('charges.index')
 			->withCharges($charges);
