@@ -36,6 +36,8 @@
 								@endforeach
 							</tbody>
 						</table>
+					@else
+						<p>No users were found for your company.</p>
 					@endif
 			</div>
 		</div>

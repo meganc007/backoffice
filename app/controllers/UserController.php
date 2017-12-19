@@ -45,7 +45,14 @@ class UserController extends \BaseController {
 
 	public function index()
 	{
-		$users = User::orderBy('company_id')->get();
+
+		if ( Auth::user()->company_id != 1 ) {
+			$users = User::where('company_id', Auth::user()->company_id)
+				->orderBy('company_id')->get();
+		}
+		else {
+			$users = User::orderBy('company_id')->get();
+		}
 
 		return View::make('users.index')
 			->withUsers($users);

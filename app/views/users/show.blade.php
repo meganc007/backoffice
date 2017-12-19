@@ -43,12 +43,15 @@
 				@endif
 				<button class="btn btn-default"><a href="{{ route('user.edit', $user->id) }}">Edit</a></button>
 
-				<form action="{{ route('user.destroy', $user->id) }}" method="POST">
+				@if ( Auth::user()->company_id == 1 )
+					<form action="{{ route('user.destroy', $user->id) }}" method="POST">
 					
-					<input type="hidden" name="_method" value="delete">
-					<button class="btn btn-danger">Delete</button>
+						<input type="hidden" name="_method" value="delete">
+						<button class="btn btn-danger">Delete</button>
 
-				</form>
+					</form>
+				@endif
+				
 			</div>
 		</div>
 	</div>
