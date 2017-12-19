@@ -1,0 +1,384 @@
+/*
+    // ========================================== \\
+   ||                                              ||
+   ||           BODY/BOOTSTRAP STYLES              ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+
+body {
+	font-family: 'Play', sans-serif;
+}
+
+.container {
+  padding: 2% 3%;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+h1, h2, h3 {font-family: 'Oswald', sans-serif;}
+h2 {font-size: 2.625em;}
+
+h3 {font-size: 2.25em;}
+
+h4 {
+  font-family: 'Play', sans-serif;
+  font-size: 1.875em;
+}
+
+p, ol li {
+	font-size: 1.5em;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+form {
+	font-family: 'Play', sans-serif; 
+}
+
+.clear {
+  clear: both !important;
+}
+
+.center {
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  margin: auto;
+}
+
+.hide {display: hidden;}
+
+.small {font-size: 1.25em !important;}
+.small .glyphicon {top: 4px !important;}
+
+.parked td, .parked a, .parked {color: #189df2 !important;}
+.inactive td, .inactive a, .inactive {color: #ff3232 !important;}
+.danger, .danger a, .danger {color: #ff3232 !important;}
+.complete td, .complete a, .complete {color: #cccccc !important;}
+
+.editbtn {
+  color: #fff;
+  background-color: #636363;
+  border-radius: 0;
+  padding: 10px 25px;
+}
+.editbtn a {color: #fff !important;}
+.editbtn:hover {
+  color: #189df2;
+  background-color: #000;
+}
+.editbtn a:hover {color: #189df2 !important;}
+.btnoverride {
+  background: transparent !important;
+  border: none !important;
+}
+.btnoverride:hover {
+  text-decoration: underline;
+}
+
+/*
+    // ========================================== \\
+   ||                                              ||
+   ||               HEADER STYLES                  ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+
+.topbar {
+  background: #fff;
+  padding-bottom: 3%;
+}
+
+.menu {
+  margin: 2% 2%;
+}
+
+.menu p {
+  margin-top: 5.5%;
+  color: #636363;
+  font-size: 1.875em;
+  left: 2.1%;
+}
+.menu img, .menu p {
+  position: absolute;
+}
+
+.menu img {
+  margin-top: 2%;
+  max-width: 5%;
+  position: absolute;
+  z-index: 1 !important;
+  top: 25%;
+}  
+
+.primary-nav {
+  display: block;
+  margin-top: 9.5%;
+  position: absolute;
+  padding: 15px;
+  background-color: #909090;
+  width: 20%;
+  z-index: 10 !important;
+}
+
+.primary-nav ul {
+  padding-left: 5%;
+  margin: 0;
+}
+
+.primary-nav ul li {
+  list-style-type: none;
+  font-size: 1.25em;
+}
+
+.primary-nav .glyphicon {
+  color: #fff;
+  padding-right: 8%;
+}
+
+.primary-nav ul li a {
+  display: block;
+  padding: 3% !important;
+  padding-left: 3%;
+  text-decoration: none;
+  color: #fff;
+}
+
+.primary-nav ul li a:hover,
+.primary-nav ul li a:focus,
+.primary-nav ul li a:hover span,
+.primary-nav ul li a:focus span {
+  color: #333 !important;
+}
+
+.primary-nav ul li a span {
+  padding-right: 15px !important;
+}
+
+.submenu {
+  display: none;
+  font-size: .75em;
+  padding: 3% !important;
+  text-decoration: none;
+  color: #fff;
+}
+
+.primary-nav ul li:hover> .submenu,
+.primary-nav ul li:focus> .submenu {
+  display: block;
+}
+
+.logo {
+  max-width: 10%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.signout {
+  margin-right: 2%;
+  margin-top: 5.5%;
+  position: absolute;
+  margin-left: 88%;
+}
+.signout a {
+  color: #636363;
+  font-size: 1.875em;
+  text-decoration: none;
+}
+
+.signout a:hover {
+  text-decoration: underline;
+}
+
+.alert {margin-top: 2%;}
+
+/*
+    // ========================================== \\
+   ||                                              ||
+   ||           LOGIN.BLADE.PHP STYLES             ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+.login {
+  background: url('assets/loginbg_blur.jpg') no-repeat top center;
+  background-size: cover;
+  height: 750px;
+  color: #636363;
+}
+
+.login a {color: #636363;}
+.login a:hover {color: #189df2;}
+
+.loginbox {
+  background-color: #fff;
+  width: 30%;
+  height: 55%;
+  border-radius: 25px;
+  margin-top: 8%;
+  padding: 5%;
+  box-shadow: 0px 3px 28.2px 1.8px rgba(0, 0, 0, 0.75); 
+
+}
+.loginbox .form-control {
+  border: 1px solid #636363;
+  border-radius: 10px;
+  height: 60px !important;
+  padding: 5%;
+  font-size: 1.5em;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75) inset; 
+}
+.loginbox input[type=email] {margin-bottom: 15% !important;}
+
+.loginbox ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #636363;
+  font-size: 1.35em;
+}
+.loginbox ::-moz-placeholder { /* Firefox 19+ */
+  color: #636363;
+  font-size: 1.35em;
+}
+.loginbox ::-ms-input-placeholder { /* IE 10+ */
+  color: #636363;
+  font-size: 1.35em;
+}
+.loginbox ::-moz-placeholder { /* Firefox 18- */
+  color: #636363;
+  font-size: 1.35em;
+}
+.forgotpw {
+  text-align: left !important;
+    padding: 3% 2%;
+    font-size: 1.125em;
+}
+.loginbtn {
+  color: #fff;
+  background-color: #636363;
+  border-radius: 0;
+  font-size: 2em !important;
+  padding: 10px 70px;
+  margin-top: 7%;
+}
+.loginbtn:hover {
+  color: #189df2;
+  background-color: #000;
+}
+
+
+/*
+    // ========================================== \\
+   ||                                              ||
+   ||                 BODY STYLES                  ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+
+.welcome {
+  background-color: #000;
+  color: #fff;
+  padding: 2% 4%;
+  margin-bottom: 2%;
+}
+
+.welcome p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.module {
+  border: 3px solid #909090;
+  border-radius: 15px;
+  padding: 0px 5px 45px 20px;
+}
+
+.domains {
+  padding-right: 20px;
+}
+.domains h2 {
+  padding-bottom: 15px;
+}
+.domains .table {
+  border-collapse: separate !important;
+  border: 1px solid #909090;
+  border-radius: 15px;
+}
+.domains .table>tbody>tr>td {
+  border-top: none;
+  border-bottom: 1px solid #909090;
+  padding-top: 20px;
+}
+.domains .table>tbody>tr:last-of-type td {
+  border: none !important;
+}
+.domains .table>thead>tr>th {
+  border-bottom: 1px solid #909090;
+}
+.domains .table a {
+  color: #333;
+}
+
+progress.projectsprogress {
+  height: 4.125em !important;
+  width: 38em !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none;
+  border-radius: 15px;
+  color: #a2fdb3 !important;
+  background-color: transparent;
+  margin-bottom: 3%; 
+}
+
+progress.projectsprogress::-webkit-progress-bar {
+  border: 2px solid #909090;
+  border-radius: 15px;
+  background-color: transparent;
+}
+progress.projectsprogress::-webkit-progress-value {
+  background-color: #a2fdb3;
+  border-radius: 15px;
+}
+progress.projectsprogress::-moz-progress-bar {
+  background-color: #a2fdb3;
+  border-radius: 15px;
+}
+
+.percentage {
+  margin-top: -6.75% !important;
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  left: 0;
+  right: 0;
+  padding: 0 0 0 25px;
+}
+
+.small a  {
+  color: #333;
+}
+
+
+/*
+    // ========================================== \\
+   ||                                              ||
+   ||               FOOTER STYLES                  ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+footer {
+  background: #000;
+  color: #fff;
+  padding: 20px 4%;
+}
+
+footer p {
+  padding-left: 3%;
+}
