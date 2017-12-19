@@ -8,7 +8,10 @@
 					<table class="table table-striped">
 						<tbody>
 							<thead>
-								<th></th>
+								@if ( Auth::user()->company_id == 1  )
+									<th></th>
+								@else
+								@endif
 								<th><p>Line</p></th>
 								<th><p>Type</p></th>
 								<th><p>Hours</p></th>
@@ -16,9 +19,12 @@
 							@foreach ($lines as $line)
 								@if ( $line->hidden != 1 )
 									<tr>
-										<td>
-											<a href="{{ route('line.edit', $line->id) }}"><button class="btn editbtn">Edit</button></a>
-										</td>
+										@if ( Auth::user()->company_id == 1  )
+											<td>
+												<a href="{{ route('line.edit', $line->id) }}"><button class="btn editbtn">Edit</button></a>
+											</td>
+										@else
+										@endif
 										<td>
 											<p><a href="{{ route('line.show', $line->id) }}">{{$line->description}} - {{$line->hours}}hrs</a></p>
 										</td>
@@ -33,6 +39,8 @@
 							@endforeach
 						</tbody>
 					</table>
+				@else
+					<p>There were no lines found for your company.</p>
 				@endif
 			</div>
 		</div>

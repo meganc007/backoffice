@@ -15,15 +15,17 @@
 						Hours: {{$line->hours}}
 					</p>
 
-					<button class="btn btn-default"><a href="{{ route('line.edit', $line->id) }}">Edit</a></button>
+					@if ( Auth::user()->company_id == 1 )
+						<button class="btn btn-default"><a href="{{ route('line.edit', $line->id) }}">Edit</a></button>
 
-					<form action="{{ route('line.destroy', $line->id) }}" method="POST">
+						<form action="{{ route('line.destroy', $line->id) }}" method="POST">
 
-						<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_method" value="delete">
 
-						<button class="btn btn-danger">Delete</button>
+							<button class="btn btn-danger">Delete</button>
 
-					</form>
+						</form>
+					@endif
 
 				@endif
 			</div>

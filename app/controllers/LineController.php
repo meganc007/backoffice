@@ -9,7 +9,22 @@ class LineController extends \BaseController {
 	 */
 	public function index()
 	{
-		$lines = Line::get();
+
+		if ( Auth::user()->company_id != 1 ) {
+			$project_id = Project::where('company_id', Auth::user()->company_id)
+				->select('id')->get();
+
+			//removes the project ids from inside the nested array
+			$result = array();
+			foreach ($project_id as $key => $val) {
+				$result[] = $val->id;
+			}
+			//finds the lines that match the project ids found in the above query
+			$lines = Line::whereIn('project_id', $result)->get();
+		}
+		else {
+			$lines = Line::get();
+		}
 
 		return View::make('lines.index')
 			->withLines($lines);
