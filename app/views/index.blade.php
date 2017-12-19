@@ -47,12 +47,12 @@
 										@else
 											<p>No line items have been entered yet.</p>
 										@endif
-
-
+									@else
+										<p>There are currently no active projects.</p>
 									@endif
 								@endforeach
 							@else
-								<p>You do not have any assigned projects currently.</p>
+								<p>No projects were found.</p>
 							@endif
 						</div>
 

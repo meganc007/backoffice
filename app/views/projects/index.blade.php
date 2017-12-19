@@ -8,7 +8,10 @@
 					<table class="table table-striped">
 						<tbody>
 							<thead>
-								<th></th>
+								@if( Auth::user()->company_id == 1 )
+									<th></th>
+								@else
+								@endif
 								<th><p>Project</p></th>
 								<th><p>Type</p></th>
 								<th><p>Status</p></th>
@@ -24,9 +27,13 @@
 									@else
 										<tr>
 									@endif
+									@if( Auth::user()->company_id == 1 )
 										<td>
 											<a href="{{ route('project.edit', $project->id) }}"><button class="btn editbtn">Edit</button></a>
 										</td>
+									@else
+									@endif
+										
 										<td>
 											<p><a href="{{ route('project.show', $project->id) }}">{{ucfirst($project->name)}}</a></p>
 										</td>

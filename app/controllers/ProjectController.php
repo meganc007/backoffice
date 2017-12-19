@@ -9,7 +9,16 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
-		$projects = Project::orderBy('created_at')->get();
+		if ( Auth::user()->company_id != 1 ) {
+			$projects = Project::where('company_id', Auth::user()->company_id)->
+				orderBy('created_at')
+				->get();
+		}
+		else {
+
+			$projects = Project::orderBy('created_at')->get();
+
+		}
 
 		return View::make('projects.index')
 			->withProjects($projects);

@@ -18,7 +18,14 @@ class BaseController extends Controller {
 	public function index()
 	{
 		$user = Auth::user();
-		$projects = Project::where('user_id', $user->id)->get();
+
+		if ( $user->company_id != 1 ) {
+			$projects = Project::where('company_id', $user->company_id)->get();
+		}
+		else {
+			$projects = Project::where('user_id', $user->id)->get();
+		}
+
 		$company = Company::where('id', $user->company_id)->first();
 		$users = User::where('company_id', $user->company_id)->orderBy('department')->get();
 
