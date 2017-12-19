@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h1>Domains Index</h1>
-				@if ( isset($domains) )
+				@if ( isset($domains) && !$domains->isEmpty() )
 					<table class="table table-striped">
 						<tbody>
 							<thead>
@@ -35,6 +35,8 @@
 							@endforeach
 						</tbody>
 					</table>
+				@else
+					<p>No domains were found for your company.</p>
 				@endif
 			</div>
 		</div>

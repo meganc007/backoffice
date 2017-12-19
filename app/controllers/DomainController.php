@@ -9,7 +9,22 @@ class DomainController extends \BaseController {
 	 */
 	public function index()
 	{
-		$domains = Domain::orderBy('domain')->get();
+		if ( Auth::user()->company_id != 1 ) {
+
+			$server_id = Server::where('company_id', Auth::user()->company_id)->select('id')->get();
+
+			//removes the server ids from inside the nested array
+			$result = array();
+			foreach ($server_id as $key => $val) {
+				$result[] = $val->id;
+			}
+			//finds the domains that match the server ids found in the above query
+			$domains = Domain::whereIn('server_id', $result)->get();
+		}
+		else {
+			$domains = Domain::orderBy('domain')->get();
+		}
+		
 
 		return View::make('domains.index')
 			->withDomains($domains);

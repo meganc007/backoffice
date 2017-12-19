@@ -20,15 +20,17 @@
 						Status Date: {{Carbon::parse($project->status_date)->toDayDateTimeString()}}
 					</p>
 					
-					<button class="btn btn-default"><a href="{{ route('project.edit', $project->id) }}">Edit</a></button>
+					@if ( Auth::user()->company_id == 1 )
+						<button class="btn btn-default"><a href="{{ route('project.edit', $project->id) }}">Edit</a></button>
 
-					<form action="{{ route('project.destroy', $project->id) }}" method="POST">
-													
-						<input type="hidden" name="_method" value="delete">
+						<form action="{{ route('project.destroy', $project->id) }}" method="POST">
+														
+							<input type="hidden" name="_method" value="delete">
 
-						<button class="btn btn-danger">Delete</button>
+							<button class="btn btn-danger">Delete</button>
 
-					</form>
+						</form>
+					@endif
 
 				@endif
 

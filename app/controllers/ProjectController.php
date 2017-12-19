@@ -11,8 +11,7 @@ class ProjectController extends \BaseController {
 	{
 		if ( Auth::user()->company_id != 1 ) {
 			$projects = Project::where('company_id', Auth::user()->company_id)->
-				orderBy('created_at')
-				->get();
+				orderBy('created_at')->get();
 		}
 		else {
 

@@ -116,6 +116,8 @@
 									{{$user->fname}} {{$user->lname}}, {{ucfirst($user->department)}} <br>
 									{{$user->email}}
 								</p>
+							@else
+								<p>No active users.</p>
 							@endif
 						@endforeach
 						<h4>Inactive Users</h4>
@@ -125,6 +127,8 @@
 									{{$user->fname}} {{$user->lname}}, {{ucfirst($user->department)}} <br>
 									{{$user->email}}
 								</p>
+							@else
+								<p>No inactive users.</p>
 							@endif
 						@endforeach
 					@else

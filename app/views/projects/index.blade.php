@@ -48,6 +48,8 @@
 							@endforeach
 						</tbody>
 					</table>
+				@else
+					<p>No projects were found for your company.</p>
 				@endif
 			</div>
 		</div>

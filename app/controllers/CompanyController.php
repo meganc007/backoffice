@@ -4,7 +4,15 @@ class CompanyController extends BaseController {
 
 	public function index()
 	{
-		$companies = Company::orderBy('name')->get();
+
+		if ( Auth::user()->company_id != 1 ) {
+			$companies = Company::where( 'id', Auth::user()->company_id )
+				->orderBy('name')->get();
+		}
+		else {
+			$companies = Company::orderBy('name')->get();
+		}
+		
 		return View::make('company.index')
 			->withCompanies($companies);
 	}
