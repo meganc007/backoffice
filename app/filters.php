@@ -2,6 +2,23 @@
 
 /*
 |--------------------------------------------------------------------------
+| Custom Filters
+|--------------------------------------------------------------------------
+|
+| Custom filters.
+|
+*/
+
+Route::filter('notadmin', function()
+{
+    if ( Auth::user()->company_id != 1 )
+    {
+        return Redirect::route('index')->with('info', "You are not authorized to view this part of the site.");
+    }
+});
+
+/*
+|--------------------------------------------------------------------------
 | Application & Route Filters
 |--------------------------------------------------------------------------
 |

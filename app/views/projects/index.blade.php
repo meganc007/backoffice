@@ -10,7 +10,6 @@
 							<thead>
 								@if( Auth::user()->company_id == 1 )
 									<th></th>
-								@else
 								@endif
 								<th><p>Project</p></th>
 								<th><p>Type</p></th>
@@ -31,7 +30,6 @@
 										<td>
 											<a href="{{ route('project.edit', $project->id) }}"><button class="btn editbtn">Edit</button></a>
 										</td>
-									@else
 									@endif
 										
 										<td>

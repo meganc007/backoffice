@@ -8,7 +8,9 @@
 					<table class="table table-striped">
 						<tbody>
 							<thead>
-								<th></th>
+								@if ( Auth::user()->company_id == 1 )
+									<th></th>
+								@endif
 								<th><p>Domain</p></th>
 								<th><p>Status</p></th>
 							</thead>
@@ -21,9 +23,11 @@
 									@else
 										<tr>
 									@endif
-											<td>
-												<a href="{{ route('domain.edit', $domain->id) }}"><button class="btn editbtn">Edit</button></a>
-											</td>
+											@if ( Auth::user()->company_id == 1 )
+												<td>
+													<a href="{{ route('domain.edit', $domain->id) }}"><button class="btn editbtn">Edit</button></a>
+												</td>
+											@endif
 											<td>
 												<p><a href="{{ route('domain.show', $domain->id) }}">{{$domain->domain}}</a></p>
 											</td>
