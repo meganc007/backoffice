@@ -132,13 +132,12 @@ class ProjectController extends \BaseController {
 		$project = Project::where('id', Request::segment(2))->first();
 
 		$companies = Company::get();
-		$domains = Domain::get();
+		// $domains = Domain::get();
 		$users = User::where('company_id', 1)->get();
-
+// ->withDomains($domains)
 		return View::make('projects.edit')
 			->withProject($project)
 			->withCompanies($companies)
-			->withDomains($domains)
 			->withUsers($users);
 	}
 

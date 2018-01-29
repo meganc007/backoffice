@@ -13,7 +13,7 @@
 
 					<div class="form-group {{ $errors->has('company_id') ? ' has-error' : '' }} ">
 						<label for="company_id">Company</label>
-						<select class="form-control" name="company_id">
+						<select class="form-control" name="company_id" id="company_id">
 							@if ( isset($companies) )
 								@foreach ($companies as $company)
 									@if ( $company->id == $project->company_id )
@@ -31,16 +31,8 @@
 
 					<div class="form-group {{ $errors->has('domain_id') ? ' has-error' : '' }}">
 						<label for="domain_id">Domain</label>
-						<select class="form-control" name="domain_id">
-							@if ( isset($domains) )
-								@foreach ($domains as $domain)
-									@if ( $domain->id == $project->domain_id )
-										<option value="{{$domain->id}}" selected>{{$domain->domain}}</option>
-									@else
-										<option value="{{$domain->id}}">{{$domain->domain}}</option>
-									@endif
-								@endforeach
-							@endif
+						<select class="form-control" name="domain_id" id="domain_id" disabled>
+							<option value="" selected disabled>Choose one of the following</option>
 						</select>
 						@if ( $errors->has('domain_id') )
 							<span class="help-block">{{$errors->first('domain_id')}}</span>
@@ -110,4 +102,27 @@
 			</div>
 		</div>
 	</div>
+	@section('scripts')
+		<script>
+			jQuery(document).ready(function($) {
+				$("#company_id").change(function() {
+					$.ajax({
+					    url: '{{route('project.ajaxchange')}}',
+			            type: 'get',
+			            data: {company_id:$('#company_id').val()},
+			            success: function(domains){ // What to do if we succeed
+				            console.log(domains);
+
+				            $(domains).each(function(key, value){
+							    console.log(value.domain);
+							    $('#domain_id').append('<option value="' + value.id +'">' + value.domain + '</option>');
+							});//end $(domains)
+						}
+
+					});//end ajax
+					$('#domain_id').removeAttr('disabled');
+				}); //end .change function
+			});	
+		</script>
+	@stop
 @stop
