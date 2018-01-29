@@ -11,8 +11,10 @@
 					</p>
 					<p>
 						Project: {{$project->name}} <br>
-						Price: {{$line->price}} <br>
-						Hours: {{$line->hours}}
+						Price: ${{ number_format($line->price, 2) }} <br>
+						@if ( Auth::user()->company_id == 1 )
+							Hours: {{$line->hours}}
+						@endif
 					</p>
 
 					@if ( Auth::user()->company_id == 1 )

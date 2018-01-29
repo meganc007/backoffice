@@ -73,6 +73,13 @@
 				</ul>
 			</li>
 			
+			<li>
+				<a href="{{ route('comment.index') }}"><span class="glyphicon glyphicon-envelope"></span>Comments</a>
+				<ul class="submenu">
+					<li><a href="{{ route('comment.create') }}"><span class="glyphicon glyphicon-plus"></span>Create a Comment</a></li>
+				</ul>
+			</li>
+			
 		</ul>
 	@else
 		<ul>
