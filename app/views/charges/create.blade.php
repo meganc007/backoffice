@@ -10,14 +10,24 @@
 					{{Form::token()}}
 
 					<div class="form-group {{ $errors->has('line_id' ? ' has-error' : '') }}">
-						<label for="line_id">Line Item</label>
-						<select class="form-control" name="line_id">
+						<label for="project_id">Project</label>
+						<select class="form-control" name="project_id" id="project_id">
 							<option value="" disabled selected>Choose one of the following</option>
-							@if ( isset($lines) )
-								@foreach ($lines as $line)
-									<option value="{{$line->id}}">{{$line->description}}</option>
+							@if ( isset($projects) )
+								@foreach ($projects as $project)
+									<option value="{{$project->id}}">{{$project->name}}</option>
 								@endforeach
 							@endif
+						</select>
+						@if ( $errors->has('project_id') )
+							<span class="help-block">{{$errors->first('project_id')}}</span>
+						@endif
+					</div>
+
+					<div class="form-group {{ $errors->has('line_id' ? ' has-error' : '') }}">
+						<label for="line_id">Line Item</label>
+						<select class="form-control" name="line_id" id="line_id" disabled>
+							<option value="" disabled selected>Choose one of the following</option>
 						</select>
 						@if ( $errors->has('line_id') )
 							<span class="help-block">{{$errors->first('line_id')}}</span>
@@ -56,4 +66,28 @@
 			</div>
 		</div>
 	</div>
+	@section('scripts')
+		<script>
+			jQuery(document).ready(function($) {
+				$("#project_id").change(function() {
+					$.ajax({
+					    url: '{{route('charge.ajaxchange')}}',
+			            type: 'get',
+			            data: {project_id:$('#project_id').val()},
+			            success: function(lines){ // What to do if we succeed
+				            console.log(lines);
+				            $('#line_id').children().not(':first').remove();
+
+				            $(lines).each(function(key, value){
+							    console.log(value.description);
+							    $('#line_id').append('<option value="' + value.id +'">' + value.description + '</option>');
+							});//end $(lines)
+						}
+
+					});//end ajax
+					$('#line_id').removeAttr('disabled');
+				}); //end .change function
+			});	
+		</script>
+	@stop
 @stop

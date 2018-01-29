@@ -48,6 +48,12 @@ Route::group(['before' => 'auth'], function(){
 	
 	Route::resource('project', 'ProjectController');
 	Route::resource('line', 'LineController');
+
+	Route::get('charge/change', [
+		'as' => 'charge.ajaxchange',
+		'uses' => 'ChargeController@change',
+	]);
+
 	Route::resource('charge', 'ChargeController');
 	Route::resource('comment', 'CommentController');
 

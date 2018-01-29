@@ -50,12 +50,21 @@ class ChargeController extends \BaseController {
 	 */
 	public function create()
 	{
-		$lines = Line::get();
+		$projects = Project::get();
 		$users = User::where('company_id', 1)->get();
 
 		return View::make('charges.create')
-			->withLines($lines)
+			->withProjects($projects)
 			->withUsers($users);
+	}
+
+	public function change() 
+	{
+		$project_id = Input::get('project_id');
+
+		$lines = Line::where('project_id', $project_id)->get();
+
+		return $lines;
 	}
 
 
@@ -118,13 +127,13 @@ class ChargeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$projects = Project::get();
 		$charge = Charge::where('id', Request::segment(2))->first();
-		$lines = Line::get();
 		$users = User::where('company_id', 1)->get();
 
 		return View::make('charges.edit')
+			->withProjects($projects)
 			->withCharge($charge)
-			->withLines($lines)
 			->withUsers($users);
 	}
 

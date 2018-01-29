@@ -112,6 +112,7 @@
 			            data: {company_id:$('#company_id').val()},
 			            success: function(domains){ // What to do if we succeed
 				            console.log(domains);
+				            $('#domain_id').children().not(':first').remove();
 
 				            $(domains).each(function(key, value){
 							    console.log(value.domain);
