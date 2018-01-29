@@ -40,10 +40,18 @@ Route::group(['before' => 'auth'], function(){
 	Route::resource('provider', 'ProviderController');
 	Route::resource('login', 'LoginController');
 	Route::resource('domain', 'DomainController');
+
+	Route::get('project/change', [
+		'as' => 'project.ajaxchange',
+		'uses' => 'ProjectController@change',
+	]);
+	
 	Route::resource('project', 'ProjectController');
 	Route::resource('line', 'LineController');
 	Route::resource('charge', 'ChargeController');
 	Route::resource('comment', 'CommentController');
+
+
 });
 
 Route::group(['before' => 'notadmin'], function() {

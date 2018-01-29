@@ -33,13 +33,29 @@ class ProjectController extends \BaseController {
 	{
 
 		$companies = Company::get();
-		$domains = Domain::get();
 		$users = User::where('company_id', 1)->get();
 
 		return View::make('projects.create')
 			->withCompanies($companies)
-			->withDomains($domains)
 			->withUsers($users);
+	}
+
+	public function change() 
+	{
+		$company_id = Input::get('company_id');
+
+		$servers = Server::select('id')->where('company_id', $company_id)->get();
+
+		//removes the server ids from inside the nested array
+		$result = array();
+		foreach ($servers as $key => $val) {
+			$result[] = $val->id;
+		}
+
+		//finds the domains that match the server ids found in the above query
+		$domains = Domain::whereIn('server_id', $result)->get();
+
+		return $domains;
 	}
 
 
