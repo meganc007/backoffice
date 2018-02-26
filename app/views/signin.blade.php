@@ -20,7 +20,7 @@
 							@if ( $errors->has('password') )
 								<span class="help-block">{{$errors->first('password')}}</span>
 							@endif
-							<a href="" class="forgotpw pull-left"><u>I forgot my password</u></a>
+							<a href="{{route('forgot')}}" class="forgotpw pull-left"><u>I forgot my password</u></a>
 						</div>
 
 						<div class="form-group">

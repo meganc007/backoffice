@@ -22,7 +22,27 @@ Route::post('/signin', [
 
 Route::get('signout', [
 	'uses' => 'UserController@getSignout',
-	'as' => 'signout'
+	'as' => 'signout',
+]);
+
+Route::get('forgotpassword', [
+	'uses' => 'PasswordController@getForgotPassword',
+	'as' => 'forgot',
+]);
+
+Route::post('forgotpassword', [
+	'uses' => 'PasswordController@postForgotPassword',
+	'as' => 'forgot',
+]);
+
+Route::get('resetpassword/{email}/{reset_token}', [
+	'uses' => 'PasswordController@getResetPassword',
+	'as' => 'reset',
+]);
+
+Route::post('resetpassword/{email}/{reset_token}', [
+	'uses' => 'PasswordController@postResetPassword',
+	'as' => 'reset',
 ]);
 
 
