@@ -1,6 +1,6 @@
 <?php
 
-class Charge extends Eloquent 
+class Comment extends Eloquent 
 {
 	/**
 	 * The database table used by the model.
