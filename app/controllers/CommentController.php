@@ -21,9 +21,11 @@ class CommentController extends \BaseController {
 	public function create()
 	{
 		$companies = Company::get();
+		$users = User::get();
 
 		return View::make('comments.create')
-			->withCompanies($companies);
+			->withCompanies($companies)
+			->withUsers($users);
 	}
 
 
@@ -84,6 +86,34 @@ class CommentController extends \BaseController {
 	{
 		//
 	}
+
+	public function change() 
+	{
+		$company_id = Input::get('company_id');
+
+		$projects = Project::where('company_id', $company_id)->get();
+
+		return $projects;
+	}
+
+	public function lineChange()
+	{
+		$project_id = Input::get('project_id');
+
+		$lines = Line::where('project_id', $project_id)->get();
+
+		return $lines;
+	}
+
+	public function chargeChange()
+	{
+		$line_id = Input::get('line_id');
+
+		$charges = Charge::where('line_id', $line_id)->get();
+	
+		return $charges;
+	}
+
 
 
 }
