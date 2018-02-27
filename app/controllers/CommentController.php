@@ -9,7 +9,10 @@ class CommentController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('comments.index');
+		$company_ids = Comment::distinct()->lists('company_id');
+		
+		return View::make('comments.index')
+			->withIds($company_ids);
 	}
 
 
@@ -36,7 +39,53 @@ class CommentController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$valid = Validator::make( Input::all(), [
+			'company_id' => 'required',
+			'user_id' => 'required',
+			'comment' => 'required',
+			'internal' => 'required',
+		]);
+
+		if ( !$valid->fails() ) 
+		{
+			$comment = new Comment;
+
+			if ( Input::has('company_id') ) {
+				$comment->company_id = Input::get('company_id');
+			}
+
+			if ( Input::has('user_id') ) {
+				$comment->user_id = Input::get('user_id');
+			}
+
+			if ( Input::has('project_id') ) {
+				$comment->project_id = Input::get('project_id');
+			}
+
+			if ( Input::has('line_id') ) {
+				$comment->line_id = Input::get('line_id');
+			}
+
+			if ( Input::has('charges_id') ) {
+				$comment->charges_id = Input::get('charges_id');
+			}
+
+			if ( Input::has('comment') ) {
+				$comment->comment = Input::get('comment');
+			}
+
+			if ( Input::has('internal') ) {
+				$comment->internal = Input::get('internal');
+			}
+
+			$comment->save();
+
+			return Redirect::route('comment.index')->with('info', "You have successfully created a comment.");
+		}
+		else
+		{
+			return Redirect::back()->withErrors($valid);
+		}
 	}
 
 

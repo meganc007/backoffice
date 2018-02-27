@@ -365,6 +365,18 @@ progress.projectsprogress::-moz-progress-bar {
   color: #333;
 }
 
+.parent-master {
+  background: #dbdbdb;
+  border-radius: 10px;
+  padding: 2.5% 0.25%;
+  margin: 2.5% 0%;
+}
+
+.parent-master span {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 
 /*
     // ========================================== \\

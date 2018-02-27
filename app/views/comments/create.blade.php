@@ -65,7 +65,7 @@
 
 					<div class="form-group {{ $errors->has('comment') ? ' has-error' : '' }}">
 						<label for="comment">Comment</label>
-						<textarea class="form-control" id="comment" rows="10"></textarea>
+						<textarea class="form-control" id="comment" rows="10" name="comment"></textarea>
 						@if( $errors->has('comment') )
 							<span class="help-block">{{ $errors->first('comment') }}</span>
 						@endif
