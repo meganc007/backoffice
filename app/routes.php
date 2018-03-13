@@ -76,21 +76,23 @@ Route::group(['before' => 'auth'], function(){
 
 	Route::resource('charge', 'ChargeController');
 
-	Route::get('comment/change', [
-		'as' => 'comment.ajaxchange',
-		'uses' => 'CommentController@change',
+	Route::get('post/change', [
+		'as' => 'post.ajaxchange',
+		'uses' => 'PostController@change',
 	]);
 
-	Route::get('comment/linechange', [
-		'as' => 'comment.linechange',
-		'uses' => 'CommentController@lineChange',
+	Route::get('post/linechange', [
+		'as' => 'post.linechange',
+		'uses' => 'PostController@lineChange',
 	]);
 
-	Route::get('comment/chargechange', [
-		'as' => 'comment.chargechange',
-		'uses' => 'CommentController@chargeChange',
+	Route::get('post/chargechange', [
+		'as' => 'post.chargechange',
+		'uses' => 'PostController@chargeChange',
 	]);
 	
+	Route::resource('post', 'PostController');
+
 	Route::resource('comment', 'CommentController');
 
 

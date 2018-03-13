@@ -9,10 +9,7 @@ class CommentController extends \BaseController {
 	 */
 	public function index()
 	{
-		$company_ids = Comment::distinct()->lists('company_id');
-		
-		return View::make('comments.index')
-			->withIds($company_ids);
+		//
 	}
 
 
@@ -23,12 +20,7 @@ class CommentController extends \BaseController {
 	 */
 	public function create()
 	{
-		$companies = Company::get();
-		$users = User::get();
-
-		return View::make('comments.create')
-			->withCompanies($companies)
-			->withUsers($users);
+		//
 	}
 
 
@@ -39,48 +31,40 @@ class CommentController extends \BaseController {
 	 */
 	public function store()
 	{
-		$valid = Validator::make( Input::all(), [
-			'company_id' => 'required',
-			'user_id' => 'required',
+		$valid = Validator::make(Input::all(), [
 			'comment' => 'required',
 			'internal' => 'required',
 		]);
 
 		if ( !$valid->fails() ) 
 		{
+
 			$comment = new Comment;
 
-			if ( Input::has('company_id') ) {
-				$comment->company_id = Input::get('company_id');
+			if ( Auth::check() ) {
+				$comment->user_id = Auth::user()->id;
 			}
 
-			if ( Input::has('user_id') ) {
-				$comment->user_id = Input::get('user_id');
+			if ( Input::has('post_id') ) {
+				$comment->post_id = Input::get('post_id');
 			}
 
-			if ( Input::has('project_id') ) {
-				$comment->project_id = Input::get('project_id');
-			}
-
-			if ( Input::has('line_id') ) {
-				$comment->line_id = Input::get('line_id');
-			}
-
-			if ( Input::has('charges_id') ) {
-				$comment->charges_id = Input::get('charges_id');
+			if ( Input::has('comment_id') ) {
+				$comment->parent_id = Input::get('comment_id');
 			}
 
 			if ( Input::has('comment') ) {
 				$comment->comment = Input::get('comment');
 			}
-
+			
 			if ( Input::has('internal') ) {
 				$comment->internal = Input::get('internal');
 			}
 
 			$comment->save();
 
-			return Redirect::route('comment.index')->with('info', "You have successfully created a comment.");
+			return Redirect::back()->with('info', "Your comment was successfully added.");
+
 		}
 		else
 		{
@@ -136,33 +120,5 @@ class CommentController extends \BaseController {
 		//
 	}
 
-	public function change() 
-	{
-		$company_id = Input::get('company_id');
-
-		$projects = Project::where('company_id', $company_id)->get();
-
-		return $projects;
-	}
-
-	public function lineChange()
-	{
-		$project_id = Input::get('project_id');
-
-		$lines = Line::where('project_id', $project_id)->get();
-
-		return $lines;
-	}
-
-	public function chargeChange()
-	{
-		$line_id = Input::get('line_id');
-
-		$charges = Charge::where('line_id', $line_id)->get();
 	
-		return $charges;
-	}
-
-
-
 }

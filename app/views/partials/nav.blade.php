@@ -74,9 +74,9 @@
 			</li>
 			
 			<li>
-				<a href="{{ route('comment.index') }}"><span class="glyphicon glyphicon-envelope"></span>Comments</a>
+				<a href="{{ route('post.index') }}"><span class="glyphicon glyphicon-envelope"></span>Posts</a>
 				<ul class="submenu">
-					<li><a href="{{ route('comment.create') }}"><span class="glyphicon glyphicon-plus"></span>Create a Comment</a></li>
+					<li><a href="{{ route('post.create') }}"><span class="glyphicon glyphicon-plus"></span>Create a Post</a></li>
 				</ul>
 			</li>
 			

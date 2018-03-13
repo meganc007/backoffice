@@ -11,13 +11,9 @@ class Comment extends Eloquent
 	protected $table = 'comments';
 
 	protected $fillable = [
-		'company_id',
 		'user_id',
-		'project_id',
-		'line_id',
-		'charges_id',
-		'parent',
-		'child',
+		'post_id',
+		'parent_id',
 		'comment',
 		'internal',
 		'hidden',
