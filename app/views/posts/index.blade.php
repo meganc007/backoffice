@@ -26,12 +26,11 @@
 										{{ $user->fname }} {{ $user->lname }}, {{ $created_at->format('M d, Y') }} at {{ $created_at->format('g:ia') }}
 										<br><br>
  									</span>
- 									<p class="reply">Reply</p>
- 									
+ 									@include('comments.create')
 								</div>
 								@if ( isset($comments) )
 									@foreach ($comments as $comment)
-										<div class="child {{ $comment->parent_id != '' ? 'nested' : '' }}">
+										<div class="child">
 											{{ $comment->comment }}
 											<span class="help-block">
 												{{ $user->fname }} {{ $user->lname }}, {{ $created_at->format('M d, Y') }} at {{ $created_at->format('g:ia') }}
@@ -48,14 +47,4 @@
 			</div>
 		</div>
 	</div>
-	@section('scripts')
-		<script>
-			jQuery(document).ready(function($) {
-				$(".reply").on('click touch', function(){
-					var html = @include('comments.create');
-					$('.reply').insertAfter(html);
-				});
-			}); //end document.ready
-		</script>
-	@stop
 @stop
