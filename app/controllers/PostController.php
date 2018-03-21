@@ -9,9 +9,13 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
+		$companies = Company::get();
+		$users = User::get();
 		$company_ids = Post::distinct()->lists('company_id');
 		
 		return View::make('posts.index')
+			->withCompanies($companies)
+			->withUsers($users)
 			->withIds($company_ids);
 	}
 

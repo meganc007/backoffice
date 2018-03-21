@@ -30,14 +30,13 @@
 								</div>
 								@if ( isset($comments) )
 									@foreach ($comments as $comment)
-										<div class="child">
-											{{ $comment->comment }}
-											<span class="help-block">
-												{{ $user->fname }} {{ $user->lname }}, {{ $created_at->format('M d, Y') }} at {{ $created_at->format('g:ia') }}
-												<br><br>
-		 									</span>
-											@include('comments.create')
-										</div>
+										
+										@include('comments.show', ['comment' => $comment])
+
+									     {{--@if(count($comment->children) > 0)
+									        recursively include this view, passing in the new collection of comments to iterate
+									        @include('comments.index', ['comments' => $comment->children])
+									    @endif--}}
 									@endforeach
 								@endif
 							@endforeach

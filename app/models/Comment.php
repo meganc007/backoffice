@@ -18,4 +18,5 @@ class Comment extends Eloquent
 		'internal',
 		'hidden',
 	];
+
 }

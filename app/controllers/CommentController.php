@@ -9,7 +9,10 @@ class CommentController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$comments = Comment::get();
+
+		return View::make('comments.index')
+			->withComments($comments);
 	}
 
 
@@ -81,7 +84,10 @@ class CommentController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$comments = Comment::get();
+
+		return View::make('comments.show')
+			->withComments($comments);
 	}
 
 
