@@ -19,4 +19,9 @@ class Comment extends Eloquent
 		'hidden',
 	];
 
+	public function children()
+    {
+        return $this->hasMany('Comment', 'parent_id')->with('children');
+    }
+
 }

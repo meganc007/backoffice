@@ -377,17 +377,18 @@ progress.projectsprogress::-moz-progress-bar {
   padding-right: 15px;
 }
 
-.child {
+.child, .nested {
   background: #f2f2f2;
   border-radius: 10px;
   padding: 2.5% 2%;
+}
+
+.child {
   margin: 2.5% 2%;
 }
 
 .nested {
-  border: 1px solid #dbdbdb;
-  border-radius: 10px;
-  margin: 2.5% 4%;
+  margin: 2.5% 6%;
 }
 
 

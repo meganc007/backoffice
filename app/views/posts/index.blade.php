@@ -9,7 +9,6 @@
 						<?php
 							$company = Company::where('id', $id)->first();
 							$posts = Post::where('company_id', $company->id )->get();
-							$comments = Post::find(1)->comments;
 						?>
 						<div class="col-xs-12">
 							<h3>{{$company->name}}</h3>
@@ -26,17 +25,23 @@
 										{{ $user->fname }} {{ $user->lname }}, {{ $created_at->format('M d, Y') }} at {{ $created_at->format('g:ia') }}
 										<br><br>
  									</span>
+ 									<?php 
+ 										$comment = '';
+ 									?>
  									@include('comments.create')
 								</div>
+								<?php 
+									$comments = Post::find($post->id)->comments()->where('post_id', $post->id)->get();
+								?>
 								@if ( isset($comments) )
 									@foreach ($comments as $comment)
 										
 										@include('comments.show', ['comment' => $comment])
 
-									     {{--@if(count($comment->children) > 0)
-									        recursively include this view, passing in the new collection of comments to iterate
+									     @if(count($comment->children) > 0)
+									        {{--recursively include this view, passing in the new collection of comments to iterate--}}
 									        @include('comments.index', ['comments' => $comment->children])
-									    @endif--}}
+									    @endif
 									@endforeach
 								@endif
 							@endforeach
