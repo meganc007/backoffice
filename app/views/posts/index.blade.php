@@ -37,7 +37,7 @@
 									@foreach ($comments as $comment)
 										
 										@include('comments.show', ['comment' => $comment])
-
+										
 									     @if(count($comment->children) > 0)
 									        {{--recursively include this view, passing in the new collection of comments to iterate--}}
 									        @include('comments.index', ['comments' => $comment->children])

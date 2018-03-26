@@ -1,5 +1,21 @@
 @if ( isset($comments) && !empty($comments) )
 	@foreach ($comments as $comment)
+		<?php 
+			$id = ($comment->id) - 1;
+			$parent = Comment::where('id', $id)->first();
+		?>
+		@if ( isset($parent) && !empty($parent) && $parent->parent_id == '' )
+			<div class="first-child">
+				<p>{{ $comment->comment }}</p>
+				<p>Comment ID {{$comment->id}}</p>
+				<p>Parent ID {{$comment->parent_id}}</p>
+				<span class="help-block">
+					{{ $user->fname }} {{ $user->lname }}, {{ $created_at->format('M d, Y') }} at {{ $created_at->format('g:ia') }}
+					<br><br>
+				</span>
+				@include('comments.create')
+			</div>
+		@endif
 		<?php
 			$children = Comment::find($comment->id)->children()->where('parent_id', $comment->id)->orderBy('parent_id')->get();
 		?>
